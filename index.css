@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: monospace;
+}
+
+#container {
+  margin: 2rem;
+  grid-column-gap: 10px;
+}
+
+.card {
+  text-align: center;
+  border: grey solid 1px;
+  padding: 1rem;
+  width: 8rem;
+  height: 8rem;
+  display: inline-grid;
+  margin: 4rem;
+  box-shadow: 3px 4px #e04b52
+}
+
+.card-image {
+  justify-self: center;
+  height: 5rem;
+  width: auto;
+}
