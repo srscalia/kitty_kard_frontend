@@ -31,41 +31,36 @@ function addCardsToDom(cards){
 }
 
 function addSingleCardToDom(card){
-  // if index 0-3 then row one
-  // if index 4-7 then row two
-  //if index 8-11 then row three
-  // if index 12-15 then row four
-
   if (cardArray.slice(0,4).includes(card)) {
     row1.innerHTML +=  `
-    <div class='card col s1'>${card.name}
-    <div class="col-content">
-     <img class="card-image" src=${card.image_back} alt="cat logo">
-     </div>
+    <div class='card'>
+      <div class="card-image">
+        <img src=${card.image_back} alt="cat logo">
+      <div>
     </div>
     `
   } else if (cardArray.slice(4,8).includes(card)) {
     row2.innerHTML +=  `
-    <div class='card col s1'>${card.name}
-    <div class="col-content">
-     <img class="card-image" src=${card.image_back} alt="cat logo">
-     </div>
+    <div class='card'>
+      <div class="card-image">
+        <img src=${card.image_back} alt="cat logo">
+      <div>
     </div>
     `
   } else if (cardArray.slice(8,12).includes(card)) {
     row3.innerHTML +=  `
-    <div class='card col s1'>${card.name}
-    <div class="col-content">
-     <img class="card-image" src=${card.image_back} alt="cat logo">
-     </div>
+    <div class='card'>
+      <div class="card-image">
+        <img src=${card.image_back} alt="cat logo">
+      <div>
     </div>
     `
   } else {
     row4.innerHTML +=  `
-    <div class='card col s1'>${card.name}
-     <div class="col-content">
-      <img class="card-image" src=${card.image_back} alt="cat logo">
-      </div>
+    <div class='card'>
+      <div class="card-image">
+        <img src=${card.image_back} alt="cat logo">
+      <div>
     </div>
     `
   }
