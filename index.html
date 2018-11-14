@@ -4,14 +4,56 @@
     <meta charset="utf-8">
     <title></title>
      <link rel="stylesheet" href="index.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
   </head>
   <body>
+    <nav class="teal" role="navigation">
+      <div class="nav-wrapper container">
+        <img id="logo-container" class="brand-logo" src="http://chittagongit.com//images/kitten-icon/kitten-icon-12.jpg" alt="">
+        <ul class="right hide-on-med-and-down">
+          <li>Kitty Kard Matching</li>
+        </ul>
+      </div>
+    </nav> <!-- end of nav bar -->
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Kitty Kard Matching</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Can you match 'em all?</h5>
+          <h5 class="header col s12 light">Enter name to play.</h5>
+        </div>
+        <div id="form" class="row center">
+          <form class="col s12">
+            <div class="row center">
+              <div class="input-field col">
+                <input id="input_text" type="text" placeholder="NAME" data-length="120">
+
+              </div>
+            </div>
+            <button class="btn-large waves-effect waves-light teal lighten-1" type="submit" name="action">NEW GAME</button>
+          </form>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <!-- <div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1" style="transform: translate3d(-50%, 199.207px, 0px); opacity: 1;"></div> -->
+    </div>
+
     <div id="parent">
+      <br><br><br><br>
       <div id="container">
         <div id='row1'></div>
         <div id='row2'></div>
         <div id='row3'></div>
         <div id='row4'></div>
+        <div id= gameInfo>
+          <h4 id="player"></h4>
+          <h4 id="counter">Timer: 0</h4>
+        </div>
       </div>
     </div>
 

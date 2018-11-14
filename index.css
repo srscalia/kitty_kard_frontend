@@ -2,15 +2,30 @@ body {
   font-family: monospace;
 }
 
-#container {
-  display: flex;
-  justify-content: center;
+
+#form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 450px;
 }
 
-.card {
+#container {
+  justify-content: center;
+  display: none
+}
+
+#logo-container {
+  margin-top: 6px;
+}
+
+
+
+.cardd {
   height: 120px;
   width: 120px;                 /* Set width of cards */
-  border: 3px solid #A8A8A8;    /* Set up Border */
+  border: 2px solid #A8A8A8;    /* Set up Border */
   border-radius: 4px;           /* Slightly Curve edges */
   overflow: hidden;             /* Fixes the corners */
   margin: 3px;
@@ -25,4 +40,8 @@ body {
 
 img {
   height: 3rem;
+}
+
+#gameInfo {
+  margin-left: 45px;
 }
