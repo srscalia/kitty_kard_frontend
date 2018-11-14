@@ -16,6 +16,10 @@ body {
   display: none
 }
 
+#scoreboard{
+  justify-content: center;
+}
+
 #logo-container {
   margin-top: 6px;
 }

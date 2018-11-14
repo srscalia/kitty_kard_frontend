@@ -1,6 +1,7 @@
 // ******************** Variables ********************
 const cardContainer = document.querySelector('#container')
 let cardArray = [];
+let gameArray = [];
 const row1 = document.querySelector('#row1')
 const row2 = document.querySelector('#row2')
 const row3 = document.querySelector('#row3')
@@ -12,9 +13,16 @@ let secondCard;
 let firstEvent;
 let secondEvent;
 let flipCount = 0
+let i = 0
+let match = 0;
+let interval;
+// let stopTime;
+let currentGameId;
 const form = document.querySelector('form')
 const player = document.querySelector('#player')
 const welcomeBoard = document.querySelector('#index-banner')
+const counter = document.querySelector('#counter')
+const scoreboardContainer = document.querySelector('#scoreboard')
 
 
 // ******************** Event listeners**************
@@ -112,9 +120,13 @@ function flipCard(event){
 }
 
 function checkForMatch(){
-  if (firstCat.id === secondCat.id) {
+  if (firstCat.id === secondCat.id && firstEvent !== secondEvent) {
     secondCard.style.visibility='hidden'
     firstCard.style.visibility='hidden'
+    match=match+1
+    if (match ===1) {
+      gameEnd()
+    }
   } else {
     firstEvent.src = firstCat.image_back
     secondEvent.src = secondCat.image_back
@@ -124,21 +136,21 @@ function checkForMatch(){
 function formEventHandler(event){
   event.preventDefault()
   let name = event.target.querySelector('#input_text').value
-  fetch('http://localhost:3000/api/v1/users', {
+  fetch('http://localhost:3000/api/v1/games', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
     body: JSON.stringify({
-      name: name,
-      wins: 0,
-      losses: 0
+      player: name,
+      time: 0,
     })
   }).then((response)=>{
     return response.json()
   }).then((json)=>{
-    player.innerText= `${json.name}'s Game`
+    player.innerText= `${json.player}'s Game`
+    currentGameId=json.id
     form.reset()
     hideForm()
     revealGame()
@@ -151,20 +163,73 @@ function hideForm(){
 
 function revealGame(){
   cardContainer.style.display = 'flex';
+  startStart()
 }
 
-setTimeout (start, 1000);
-let i = 0
+function startStart(){
+  setTimeout (start, 1000);
+}
 
 function start(){
-  setInterval(increment, 1000);
+  interval = setInterval(increment, 1000);
 }
 
 function increment(){
-  if (i<100) {
+  if (i<Infinity) {
     i++
-    console.log(i);
+    renderSeconds(i)
   }
 }
 
+function renderSeconds(i){
+  counter.innerText = `Timer: ${i}`
+}
+
+function gameEnd(){
+  clearInterval(interval)
+  let stopTime = i
+  i=0
+  sendPatchForEndGame(stopTime)
+}
+
+function sendPatchForEndGame(stopTime){
+  fetch(`http://localhost:3000/api/v1/games/${currentGameId}`, {
+    method: "PATCH",
+    headers: {
+            "Content-Type": "application/json; charset=utf-8"
+    },
+    body: JSON.stringify({
+      time: stopTime
+    })
+  })
+}
+
+function fetchGames(){
+  fetch('http://localhost:3000/api/v1/games')
+  .then(response=>response.json())
+  .then((json)=>{
+    gamesArray = json
+    addGamesToDom(gamesArray)
+  })
+}
+
+function addGamesToDom(gamesArray){
+  gamesArray.forEach((game)=>{
+    addSingleGameToDom(game)
+  })
+}
+
+function addSingleGameToDom(game){
+  scoreboardContainer.innerHTML+= `
+  <tr data-id=${game.id}>
+    <td>${game.player}</td>
+    <td>${game.time}</td>
+  </tr>
+  `
+}
+
+
+
+
+fetchGames()
 fetchCards()
