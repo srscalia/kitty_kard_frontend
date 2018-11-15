@@ -13,7 +13,8 @@ body {
 
 #container {
   justify-content: center;
-  display: none
+  display: none;
+  padding: 50px;
 }
 
 #scoreboard{
@@ -22,6 +23,8 @@ body {
 
 #logo-container {
   margin-top: 6px;
+  height: 6em;
+  text-align: center
 }
 
 
@@ -39,11 +42,16 @@ body {
   display: flex;
   justify-content: center;    /* Group Children in Center */
   align-items: center;        /* Group Children in Center (+axis) */
-  padding: 30px;
+  padding: 15px;
 }
 
-img {
-  height: 4rem;
+.card-logo {
+  height: 6em;
+}
+
+.card-image-flipped {
+  margin-top: 18px;
+  height: 3em;
 }
 
 #gameInfo {
@@ -58,4 +66,8 @@ img {
 
 .table-font {
   font-size: 1.5em;
+}
+
+#parent-of-input {
+  justify-content: center; 
 }

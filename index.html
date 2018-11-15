@@ -5,7 +5,7 @@
     <title></title>
      <link rel="stylesheet" href="index.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   </head>
   <body>
     <nav class="teal" role="navigation">
@@ -20,20 +20,19 @@
       <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">Kitty Kard Matching</h1>
+        <h1 class="header center teal-text text-lighten-2 animated flipInX">Kitty Kard Matching</h1>
         <div class="row center">
-          <h5 class="header col s12 light">Can you match 'em all?</h5>
-          <h5 class="header col s12 light">Enter name to play.</h5>
+          <h5 class="header col s12 light animated bounceIn delay-1s">Can you match 'em all?</h5>
+          <h5 class="header col s12 light animated bounceIn delay-1s">Enter name to play.</h5>
         </div>
-        <div id="form" class="row center">
+        <div id="form" class="row center animated slideInUp delay-2s">
           <form class="col s12">
             <div class="row center">
-              <div class="input-field col">
+              <div id="parent-of-input" class="input-field col">
                 <input id="input_text" type="text" placeholder="NAME" data-length="120">
-
               </div>
             </div>
-            <button class="btn-large waves-effect waves-light teal lighten-1" type="submit" name="action">NEW GAME</button>
+            <button class="btn-small waves-effect waves-light teal lighten-1" type="submit" name="action">NEW GAME</button>
           </form>
         </div>
         <br><br>

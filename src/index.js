@@ -58,7 +58,7 @@ function addCardsToDom(cardArray){
     row1.innerHTML +=  `
     <div data-id='${card.id}' class='cardd'>
       <div class="card-image">
-        <img src=${card.image_back} alt="cat logo">
+        <img class='card-logo' src=${card.image_back} alt="cat logo">
       <div>
     </div>
     `
@@ -67,7 +67,7 @@ function addCardsToDom(cardArray){
     row2.innerHTML +=  `
     <div data-id='${card.id}' class='cardd'>
       <div class="card-image">
-        <img src=${card.image_back} alt="cat logo">
+        <img class='card-logo'src=${card.image_back} alt="cat logo">
       <div>
     </div>
     `
@@ -76,7 +76,7 @@ function addCardsToDom(cardArray){
     row3.innerHTML +=  `
     <div data-id='${card.id}' class='cardd'>
       <div class="card-image">
-        <img src=${card.image_back} alt="cat logo">
+        <img class='card-logo' src=${card.image_back} alt="cat logo">
       <div>
     </div>
     `
@@ -85,7 +85,7 @@ function addCardsToDom(cardArray){
     row4.innerHTML +=  `
     <div data-id='${card.id}' class='cardd'>
       <div class="card-image">
-        <img src=${card.image_back} alt="cat logo">
+        <img class='card-logo' src=${card.image_back} alt="cat logo">
       <div>
     </div>
     `
@@ -102,6 +102,7 @@ function flipCard(event){
     firstCat = cardArray.find((cat)=>{
       return cat.id == firstId
     })
+    event.target.className = "card-image-flipped"
     event.target.src = firstCat.image_front
   } else if (flipCount === 2) {
     let secondId = event.target.parentElement.parentElement.dataset.id
@@ -111,6 +112,7 @@ function flipCard(event){
     secondCat = cardArray.find((cat)=>{
       return cat.id == secondId
     })
+    event.target.className = "card-image-flipped"
     event.target.src = secondCat.image_front
     flipCount = 0
     setTimeout(function() { checkForMatch(); }, 500);
@@ -122,11 +124,13 @@ function checkForMatch(){
     secondCard.style.visibility='hidden'
     firstCard.style.visibility='hidden'
     match=match+1
-    if (match ===1) {
+    if (match ===8) {
       gameEnd()
     }
   } else {
+    firstEvent.className = "card-logo"
     firstEvent.src = firstCat.image_back
+    secondEvent.className = "card-logo"
     secondEvent.src = secondCat.image_back
   }
 }
@@ -217,7 +221,7 @@ function sendPatchForEndGame(stopTime){
 
 function addGamesToDom(gamesArray){
   table.innerHTML+= `
-  <table>
+  <table class='animated slideInUp'>
     <thead>
       <tr>
         <th class='table-font'></th>
