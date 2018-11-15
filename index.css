@@ -43,9 +43,19 @@ body {
 }
 
 img {
-  height: 3rem;
+  height: 4rem;
 }
 
 #gameInfo {
   margin-left: 45px;
+}
+
+#table {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-font {
+  font-size: 1.5em;
 }

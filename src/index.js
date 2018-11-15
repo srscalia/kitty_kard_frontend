@@ -16,14 +16,12 @@ let flipCount = 0
 let i = 0
 let match = 0;
 let interval;
-// let stopTime;
 let currentGameId;
 const form = document.querySelector('form')
 const player = document.querySelector('#player')
 const welcomeBoard = document.querySelector('#index-banner')
 const counter = document.querySelector('#counter')
-const scoreboardContainer = document.querySelector('#scoreboard')
-
+const table = document.querySelector('#table')
 
 // ******************** Event listeners**************
 
@@ -190,6 +188,8 @@ function gameEnd(){
   let stopTime = i
   i=0
   sendPatchForEndGame(stopTime)
+  // hide gameEnd
+  cardContainer.style.display = 'none'
 }
 
 function sendPatchForEndGame(stopTime){
@@ -201,35 +201,62 @@ function sendPatchForEndGame(stopTime){
     body: JSON.stringify({
       time: stopTime
     })
-  })
-}
-
-function fetchGames(){
-  fetch('http://localhost:3000/api/v1/games')
-  .then(response=>response.json())
-  .then((json)=>{
-    gamesArray = json
-    addGamesToDom(gamesArray)
-  })
+  }).then(()=>{
+    fetch('http://localhost:3000/api/v1/games')
+    .then(response=>response.json())
+    .then((json)=>{
+      gamesArray = json
+      gamesArray.sort(function (a, b) {
+        return a.time - b.time;
+      });
+      addGamesToDom(gamesArray)
+    })
+  }
+  )
 }
 
 function addGamesToDom(gamesArray){
+  table.innerHTML+= `
+  <table>
+    <thead>
+      <tr>
+        <th class='table-font'></th>
+        <th class='table-font'></th>
+        <th class='table-font'></th>
+        <th class='table-font'></th>
+        <th class='table-font'></th>
+        <th class='table-font'></th>
+        <th class='table-font'></th>
+        <th class='table-font'>Players</th>
+        <th class='table-font'>Best Times</th>
+        <th class='table-font'>Date of Score</th>
+      </tr>
+    </thead>
+    <tbody id="scoreboard">
+    </tbody>
+  </table>`
   gamesArray.forEach((game)=>{
     addSingleGameToDom(game)
   })
 }
 
 function addSingleGameToDom(game){
+  let scoreboardContainer = table.querySelector('#scoreboard')
   scoreboardContainer.innerHTML+= `
   <tr data-id=${game.id}>
-    <td>${game.player}</td>
-    <td>${game.time}</td>
+    <td class='table-font'></td>
+    <td class='table-font'></td>
+    <td class='table-font'></td>
+    <td class='table-font'></td>
+    <td class='table-font'></td>
+    <td class='table-font'></td>
+    <td class='table-font'></td>
+    <td class='table-font'>${game.player}</td>
+    <td class='table-font'>${game.time}</td>
+    <td class='table-font'>${game.updated_at}</td>
   </tr>
   `
 }
 
-
-
-
-fetchGames()
 fetchCards()
+//
