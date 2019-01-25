@@ -1,6 +1,6 @@
 # Kitty Kard Matching Game (Frontend)
 
-Demo: https://www.youtube.com/watch?v=RyZm8AFmCmw&list=UUom0HSbrZ1WkvnOjtFTyN2w
+**Demo**: https://www.youtube.com/watch?v=RyZm8AFmCmw&list=UUom0HSbrZ1WkvnOjtFTyN2w
 
 Just for fun. Test your memory and see how quickly you can match the kitty kards!
 
