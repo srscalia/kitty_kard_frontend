@@ -13,7 +13,7 @@ This is the frontend repository for this project. To run this app on your local 
   * Clone this repo down to your local machine. 
   * In the repository, run `open index.html`.
   
-These instructions will get you a copy of the backend for the project up and running on your local machine for development purposes.
+These instructions will get you a copy of the frontend for the project up and running on your local machine for development purposes.
 
 ### Prerequisites
 
